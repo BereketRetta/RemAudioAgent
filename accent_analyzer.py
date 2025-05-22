@@ -457,14 +457,14 @@ class AccentAnalyzerOpenAI:
             is_english = transcription_result["is_english"]
 
             # If it's not English, return that info
-            # if not is_english:
-            #     return {
-            #         "accent": "Non-English",
-            #         "confidence": 90,
-            #         "explanation": f"The speech appears to be in {transcription_result['language']} rather than English.",
-            #         "is_english": False,
-            #         "transcription": transcription
-            #     }
+            if not is_english:
+                return {
+                    "accent": "Non-English",
+                    "confidence": 90,
+                    "explanation": f"The speech appears to be in {transcription_result['language']} rather than English.",
+                    "is_english": False,
+                    "transcription": transcription
+                }
 
             # Analyze the accent using GPT
             gpt_analysis = self.analyze_accent_with_openai(transcription)
