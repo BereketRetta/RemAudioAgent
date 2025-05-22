@@ -541,6 +541,10 @@ def create_streamlit_app():
     uploaded_file = st.file_uploader("Or upload an audio/video file:",
                                      type=["mp3", "wav", "mp4", "m4a", "mov", "avi"])
 
+    openai_key_accent = os.getenv("OPENAI_API_KEY")
+
+    print("openai_key_accent >>> ", openai_key_accent)
+
     if st.button("Analyze Accent"):
         if not os.getenv("OPENAI_API_KEY"):
             st.error(
